@@ -294,8 +294,8 @@ where
     /// For example, when constructing a set from another set, we know
     /// that values are unique.
     #[cfg_attr(feature = "inline-more", inline)]
-    pub fn insert_unique_unchecked(&mut self, value: T) -> &T {
-        self.map.insert_unique_unchecked(value, ()).0
+    pub fn insert_unique_unchecked(&mut self, value: T) {
+        self.map.insert_unique_unchecked(value, ());
     }
 
     /// Insert the value into the set, and get its index.

@@ -390,11 +390,9 @@ where
     /// This operation is useful during initial population of the map.
     /// For example, when constructing a map from another map, we know
     /// that keys are unique.
-    pub fn insert_unique_unchecked(&mut self, key: K, value: V) -> (&K, &mut V) {
+    pub fn insert_unique_unchecked(&mut self, key: K, value: V) {
         let hash = self.hash(&key);
-        let index = self.core.push(hash, key, value);
-        let entry = &mut self.core.as_entries_mut()[index];
-        (&entry.key, &mut entry.value)
+        self.core.push(hash, key, value);
     }
 
     /// Get the given key’s corresponding entry in the map for insertion and/or
